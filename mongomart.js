@@ -22,14 +22,16 @@ var express = require('express'),
     assert = require('assert'),
     ItemDAO = require('./items').ItemDAO,
     CartDAO = require('./cart').CartDAO;
-    
+
 
 // Set up express
 app = express();
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
+app.set('port', (process.env.PORT || 5000));
 app.use('/static', express.static(__dirname + '/static'));
 app.use(bodyParser.urlencoded({ extended: true }));
+
 
 
 /*
@@ -287,9 +289,9 @@ MongoClient.connect('mongodb://heroku_hhwn004z:9jsoulg54qtapd3etuk9obc637@ds0113
     app.use('/', router);
 
     // Start the server listening
-    var server = app.listen(3000, function() {
-        var port = server.address().port;
-        console.log('Mongomart server listening on port %s.', port);
+    var server = app.listen(app.get('port'), function() {
+        // var port = server.address().port;
+        console.log('Mongomart server listening on port %s.', app.get('port'));
     });
 
 });
