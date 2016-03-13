@@ -51,7 +51,10 @@ var ITEMS_PER_PAGE = 5;
 // Hardcoded USERID for use with the shopping cart portion
 var USERID = "558098a65133816958968d88";
 
-MongoClient.connect('mongodb://localhost:27017/mongomart', function(err, db) {
+// local mongod: mongodb://localhost:27017/mongomart
+// heroku mongod: mongodb://heroku_hhwn004z:9jsoulg54qtapd3etuk9obc637@ds011389.mlab.com:11389/heroku_hhwn004z
+
+MongoClient.connect('mongodb://heroku_hhwn004z:9jsoulg54qtapd3etuk9obc637@ds011389.mlab.com:11389/heroku_hhwn004z', function(err, db) {
     "use strict";
 
     assert.equal(null, err);
